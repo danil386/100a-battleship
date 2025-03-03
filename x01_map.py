@@ -40,11 +40,12 @@ xx........
 occupied = [[1, 1], [2, 1], [4, 0], [5, 0], [6, 0], [0, 1], [0, 2], [0, 3], [1, 8], [2, 8], [3, 8], [4, 8], [4, 3], [4, 4], [4, 5], [4, 6], [4, 7]]
 
 x = 0
-y = 0
+y = 10
 z = [x,y]
 
-for z in range(10):
-    if z == occupied:
+for y in range(10,-1,-1):
+    if z in occupied:
         print("x")
     else:
         print(".")
+    z = [x,y-1]

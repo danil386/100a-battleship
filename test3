@@ -1,0 +1,22 @@
+occupied =[[0,1],[2,0],[5,2],[3,10]]
+
+
+x = 0
+y = 10
+z = [x,y]
+p = [" "]
+
+
+for y in range(10,-1,-1):
+    for x in range(11):
+        if z in occupied:
+            g = "x"
+        else:
+            g = "."
+        print(z)
+        p.append(g)
+        z = [x+1,y]
+
+    print(p)
+    print(f" {p[1]}{p[2]}{p[3]}{p[4]}{p[5]}{p[6]}{p[7]}{p[8]}{p[9]}{p[10]}")
+    z = [x,y-1]
