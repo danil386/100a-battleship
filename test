@@ -1,0 +1,14 @@
+occupied =[[0,1],[2,0],[5,2]]
+
+
+x = 0
+y = 10
+z = [x,y]
+
+for y in range(10,-1,-1):
+    if z in occupied:
+        print("x")
+    else:
+        print(".")
+    print(z)
+    z = [x,y-1]
