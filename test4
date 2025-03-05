@@ -1,0 +1,29 @@
+#!python3
+
+letter = "d"
+
+if letter == "A" or "a":
+    letter = 0
+elif letter == "B" or "b":
+    letter = 1
+elif letter == "C" or "c":
+    letter = 2
+elif letter == "D" or "d":
+    letter = 3
+elif letter == "E" or "e":
+    letter = 4
+elif letter == "F" or "f":
+    letter = 5
+elif letter == "G" or "g":
+    letter = 6
+elif letter == "H" or "h":
+    letter = 7
+elif letter == "I"or "i":
+    letter = 8
+elif letter == "J" or "j":
+    letter = 9
+
+
+c = [letter, 3]
+print(c)
+ 
