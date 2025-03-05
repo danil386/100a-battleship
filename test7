@@ -1,0 +1,63 @@
+import re
+
+
+def convert(coordinate):
+  rc = coordinate.replace(" ","")
+  match = re.match(r"([a-z]+)([0-9]+)", rc, re.I)
+  if match:
+    letter = match.group(1)
+    number = match.group(2)
+
+  if letter == "A" or letter == "a":
+    letter = 0
+  elif letter == "B" or letter == "b":
+    letter = 1
+  elif letter == "C" or letter == "c":
+    letter = 2
+  elif letter == "D" or letter == "d":
+    letter = 3
+  elif letter == "E" or letter == "e":
+    letter = 4
+  elif letter == "F" or letter == "f":
+    letter = 5
+  elif letter == "G" or letter == "g":
+    letter = 6
+  elif letter == "H" or letter == "h":
+    letter = 7
+  elif letter == "I" or letter == "i":
+    letter = 8
+  elif letter == "J" or letter == "j":
+    letter = 9
+  
+  number = int(number) - 1
+  c = [letter, number]
+
+  return letter, number
+
+
+
+o = False
+while o == False:
+    orientation = input(f"Would you like to place the b horizontally or vertically? (type h or v): ")
+    if orientation == "v" or orientation == "V" or orientation == "h" or orientation == "H":
+        o = True
+    else:
+        print("Error. Type h or v.")
+
+print("cool")
+
+b = False
+while b == False:
+    goodc = False
+    while goodc == False:
+        c1 = input(f"Ok! Enter the first coordinate you wish for boat to occupy: ")
+        c2 = input(f"Enter your second coordinate: ")
+        try:
+            x1, y1 = convert(c1)
+            print(x1)
+            x2, y2 = convert(c2)
+            print(x2)
+            if x1 == str(x1):
+                goodc = True
+        except:
+            print("coordinates are not valid, try again.")

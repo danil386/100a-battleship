@@ -43,54 +43,77 @@ def convert(coordinate):
   return letter, number
 
 
-
 def create():
     boats = ["Tugboat","Submarine","Destroyer","Carrier","Battleship"]
 
     for i in boats:
-        p = False
+        b = False
         boat = i
-        orientation = input(f"Would you like to place the {boat} horizontally or vertically? (type h or v): ")
+        o = False
+        while o == False:
+          orientation = input(f"Would you like to place the {boat} horizontally or vertically? (type h or v): ")
+          if orientation == "v" or orientation == "V" or orientation == "h" or orientation == "H":
+             o = True
+          else:
+             print("Error. Type h or v.")
   
         if boat == "Tugboat":
-            while p == False:
-                c1 = input(f"Ok! Enter the first coordinate you wish for {boat} to occupy: ")
-                c2 = input(f"Enter your second coordinate: ")
-                x1, y1 = convert(c1)
-                x2, y2 = convert(c2)
+            while b == False:
+                goodc = False
+                while goodc == False:
+                  c1 = input(f"Ok! Enter the first coordinate you wish for {boat} to occupy: ")
+                  c2 = input(f"Enter your second coordinate: ")
+                  try:
+                    x1, y1 = convert(c1)
+                    print(c1)
+                    x2, y2 = convert(c2)
+                    print(c2)
+                    if c2 == str(c2):
+                       goodc = True
+                  except:
+                    print("coordinates are not valid, try again.")
                 if orientation == "h":
                     print(c1)  
                     print(c2)
                     if x2 == x1 -1:
-                        p = True
+                        b = True
                         print(c1)
                     elif x2 == x1 +1:
-                        p = True
+                        b = True
                         print(c2)
                     else:
                         print("error. these coordinates are not next to each other.")
+                    orientation = "horizontal"
                 elif orientation == "v":
                     print(c1)
                     print(c2)
                     if y2 == y1 -1:
-                        p = True
+                        b = True
                         print(c1)
                     elif y2 == y1 +1:
-                        p = True
+                        b = True
                         print(c2)
                     else:
                         print("error. these coordinates are not next to each other.")
+                    orientation = "vertical"
             coort = [c1, c2]
             ort = orientation
       
         if boat == "Submarine" or boat == "Destroyer":
-            while p == False:
-                c1 = input(f"Ok! Enter the first coordinate you wish for {boat} to occupy: ")
-                c2 = input(f"Enter your second coordinate: ")
-                c3 = input(f"Enter your third coordinate: ")
-                x1, y1 = convert(c1)
-                x2, y2 = convert(c2)
-                x3, y3 = convert(c3)
+            while b == False:
+                goodc = False
+                while goodc == False:
+                  c1 = input(f"Ok! Enter the first coordinate you wish for {boat} to occupy: ")
+                  c2 = input(f"Enter your second coordinate: ")
+                  c3 = input(f"Enter your third coordinate: ")
+                  try:
+                    x1, y1 = convert(c1)
+                    x2, y2 = convert(c2)
+                    x3, y3 = convert(c3)
+                    if c2 == str(c2):
+                      goodc = True
+                  except:
+                    print("coordinates are not valid, try again.")                
                 if orientation == "h":
                     print(c1)
                     print(c2)
@@ -99,9 +122,10 @@ def create():
                     length.sort()
                     print(length)
                     if length[0] == length[1] -1 and length[1] == length[2]-1:
-                        p = True
+                        b = True
                     else:
                         print("error. these coordinates are not next to each other.")
+                    orientation = "horizontal"
                 elif orientation == "v":
                     print(c1)
                     print(c2)
@@ -110,22 +134,30 @@ def create():
                     heights.sort()
                     print(heights)
                     if heights[0] == heights[1] -1 and heights[1] == heights[2]-1:
-                        p = True
+                        b = True
                     else:
                         print("error. these coordinates are not next to each other.")
+                    orientation = "vertical"
             coorsd = [c1, c2, c3]
             orsd = orientation
   
         if boat == "Carrier":
-            while p == False:
-                c1 = input(f"Ok! Enter the first coordinate you wish for {boat} to occupy: ")
-                c2 = input("Enter your second coordinate: ")
-                c3 = input("Enter your third coordinate: ")
-                c4 = input("Enter your fourth coordinate: ")
-                x1, y1 = convert(c1)
-                x2, y2 = convert(c2)
-                x3, y3 = convert(c3)
-                x4, y4 = convert(c4)
+            while b == False:
+                goodc = False
+                while goodc == False:
+                  c1 = input(f"Ok! Enter the first coordinate you wish for {boat} to occupy: ")
+                  c2 = input("Enter your second coordinate: ")
+                  c3 = input("Enter your third coordinate: ")
+                  c4 = input("Enter your fourth coordinate: ")
+                  try:
+                    x1, y1 = convert(c1)
+                    x2, y2 = convert(c2)
+                    x3, y3 = convert(c3)
+                    x4, y4 = convert(c4)
+                    if c2 == str(c2):
+                       goodc = True
+                  except:
+                    print("coordinates are not valid, try again.")                                         
                 if orientation == "h":
                     print(c1)
                     print(c2)
@@ -135,9 +167,10 @@ def create():
                     length.sort()
                     print(length)
                     if length[0] == length[1] -1 and length[1] == length[2]-1 and length[2] == length[3]-1:
-                        p = True
+                        b = True
                     else:
                         print("error. these coordinates are not next to each other.")
+                    orientation = "horizontal"
                 elif orientation == "v":
                     print(c1)
                     print(c2)
@@ -147,24 +180,32 @@ def create():
                     heights.sort()
                     print(heights)
                     if heights[0] == heights[1] -1 and heights[1] == heights[2]-1 and heights[2] == heights[3]-1:
-                        p = True
+                        b = True
                     else:
                         print("error. these coordinates are not next to each other.")
+                    orientation = "vertical"
             coorc = [c1, c2, c3, c4]
             orc = orientation
 
         if boat == "Battleship":
-            while p == False:
-                c1 = input(f"Ok! Enter the first coordinate you wish for {boat} to occupy: ")
-                c2 = input("Enter your second coordinate: ")
-                c3 = input("Enter your third coordinate: ")
-                c4 = input("Enter your fourth coordinate: ")
-                c5 = input("Enter your fifth coordinate: ")
-                x1, y1 = convert(c1)
-                x2, y2 = convert(c2)
-                x3, y3 = convert(c3)
-                x4, y4 = convert(c4)
-                x5, y5 = convert(c5)
+            while b == False:
+                goodc = False
+                while goodc == False:
+                  c1 = input(f"Ok! Enter the first coordinate you wish for {boat} to occupy: ")
+                  c2 = input("Enter your second coordinate: ")
+                  c3 = input("Enter your third coordinate: ")
+                  c4 = input("Enter your fourth coordinate: ")
+                  c5 = input("Enter your fifth coordinate: ")
+                  try:  
+                    x1, y1 = convert(c1)
+                    x2, y2 = convert(c2)
+                    x3, y3 = convert(c3)
+                    x4, y4 = convert(c4)
+                    x5, y5 = convert(c5)
+                    if c2 == str(c2):
+                       goodc = True
+                  except:
+                    print("coordinates are not valid, try again.")                                      
                 if orientation == "h":
                     print(c1)
                     print(c2)
@@ -175,9 +216,10 @@ def create():
                     length.sort()
                     print(length)
                     if length[0] == length[1] -1 and length[1] == length[2]-1 and length[2] == length[3]-1 and length[3] == length[4]-1:
-                        p = True
+                        b = True
                     else:
                         print("error. these coordinates are not next to each other.")
+                    orientation = "horizontal"
                 elif orientation == "v":
                     print(c1)
                     print(c2)
@@ -188,9 +230,10 @@ def create():
                     heights.sort()
                     print(heights)
                 if heights[0] == heights[1] -1 and heights[1] == heights[2]-1 and heights[2] == heights[3]-1 and heights[3] == heights[4]-1:
-                    p = True
+                    b = True
                 else:
                     print("error. these coordinates are not next to each other.")
+                orientation = "vertical"
             coorb = [c1, c2, c3, c4, c5]
             orb = orientation
 
