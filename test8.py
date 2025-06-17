@@ -51,33 +51,29 @@ def convert(coordinate):
 
 
 def fullList(ships):
-  amount = len(ships)
-  x = 0
-  occupied = ["start"]
-  for i in range (0, amount):
-      a = convert(ships[x])
-      x = x+1
-      occupied.append(a)
-  occupied.remove("start")
-  return occupied
+  '''
+  inputs:
+  ships: list of all current/valid ship data
 
   
-def isConflict(occupied,boat):
-  conflict = set(map(tuple, occupied)).intersection(set(map(tuple, boat)))
-  if conflict == set():
-    c = False
-  else:
-    c = True
+  return:
+  list of occupied coordinates
+  (example: [ [0,2] , [0,3] , [1,4] , [2,4] , [3,4] ])
+  '''
 
 
-  return c
   
+
 
 
 ships = ["A3","b3","c3","j4","j5"]
 
-occupied = fullList(ships)
+amount = len(ships)
+x = 0
+occupied = ["start"]
+for i in range (0, amount):
+    a = convert(ships[x])
+    x = x+1
+    occupied.append(a)
+occupied.remove("start")
 print(occupied)
-boat = [[1,3],[0,3]]
-c = isConflict(occupied, boat)
-print(c)

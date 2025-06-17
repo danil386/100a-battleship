@@ -58,8 +58,8 @@ def create():
              print("Error. Type h or v.")
   
         if boat == "Tugboat":
+            goodc = False
             while b == False:
-                goodc = False
                 while goodc == False:
                   c1 = input(f"Ok! Enter the first coordinate you wish for {boat} to occupy: ")
                   c2 = input(f"Enter your second coordinate: ")
@@ -99,9 +99,9 @@ def create():
             coort = [c1, c2]
             ort = orientation
       
-        if boat == "Submarine" or boat == "Destroyer":
+        if boat == "Submarine":
+            goodc = False
             while b == False:
-                goodc = False
                 while goodc == False:
                   c1 = input(f"Ok! Enter the first coordinate you wish for {boat} to occupy: ")
                   c2 = input(f"Enter your second coordinate: ")
@@ -138,12 +138,54 @@ def create():
                     else:
                         print("error. these coordinates are not next to each other.")
                     orientation = "vertical"
-            coorsd = [c1, c2, c3]
-            orsd = orientation
+            coors = [c1, c2, c3]
+            ors = orientation
+
+        if boat == "Destroyer":
+            goodc = False
+            while b == False:
+                while goodc == False:
+                  c1 = input(f"Ok! Enter the first coordinate you wish for {boat} to occupy: ")
+                  c2 = input(f"Enter your second coordinate: ")
+                  c3 = input(f"Enter your third coordinate: ")
+                  try:
+                    x1, y1 = convert(c1)
+                    x2, y2 = convert(c2)
+                    x3, y3 = convert(c3)
+                    if c2 == str(c2):
+                      goodc = True
+                  except:
+                    print("coordinates are not valid, try again.")                
+                if orientation == "h":
+                    print(c1)
+                    print(c2)
+                    print(c3)
+                    length = [x1, x2, x3]
+                    length.sort()
+                    print(length)
+                    if length[0] == length[1] -1 and length[1] == length[2]-1:
+                        b = True
+                    else:
+                        print("error. these coordinates are not next to each other.")
+                    orientation = "horizontal"
+                elif orientation == "v":
+                    print(c1)
+                    print(c2)
+                    print(c3)
+                    heights = [y1, y2, y3]
+                    heights.sort()
+                    print(heights)
+                    if heights[0] == heights[1] -1 and heights[1] == heights[2]-1:
+                        b = True
+                    else:
+                        print("error. these coordinates are not next to each other.")
+                    orientation = "vertical"
+            coord = [c1, c2, c3]
+            ord = orientation
   
         if boat == "Carrier":
+            goodc = False
             while b == False:
-                goodc = False
                 while goodc == False:
                   c1 = input(f"Ok! Enter the first coordinate you wish for {boat} to occupy: ")
                   c2 = input("Enter your second coordinate: ")
@@ -188,8 +230,8 @@ def create():
             orc = orientation
 
         if boat == "Battleship":
+            goodc = False
             while b == False:
-                goodc = False
                 while goodc == False:
                   c1 = input(f"Ok! Enter the first coordinate you wish for {boat} to occupy: ")
                   c2 = input("Enter your second coordinate: ")
@@ -244,8 +286,8 @@ def create():
   '''
     output = [
     { "name" : "Tugboat", "size" : 2 , "coordinates" : coort , "orientation" : ort},
-    { "name" : "Submarine", "size" : 3 , "coordinates" : coorsd , "orientation" : orsd},
-    { "name" : "Destroyer", "size" : 3 , "coordinates" : coorsd , "orientation" : orsd},
+    { "name" : "Submarine", "size" : 3 , "coordinates" : coors , "orientation" : ors},
+    { "name" : "Destroyer", "size" : 3 , "coordinates" : coord , "orientation" : ord},
     { "name" : "Carrier", "size" : 4 , "coordinates" : coorc , "orientation" : orc},
     { "name" : "Battleship", "size" : 5 , "coordinates" : coorb , "orientation" : orb }
     ]
